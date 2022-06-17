@@ -2,6 +2,7 @@
         <head>
         <title>wcm-2022 41023110</title>
         <meta charset="utf-8">
+<meta property="head" content="H1">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -138,24 +139,49 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='Tetris.html'>Next</a> >> Tetris<br /><h1>About</h1>
-<p><span>wcm2022課程網站連結</span></p>
-<p><span>網站</span>:<a href="https://localhost:8443/content/index.html">https://localhost:8443/content/index.html</a></p>
-<p><span>倉儲</span>:<a href="https://github.com/41023110/wcm2022">https://github.com/41023110/wcm2022</a></p>
-<p><span></span></p>
-<pre></pre>
-<p>此內容管理系統以 <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 作為 submodule 運作, 可以選定對應的版本運作, cmsimde 可以持續改版, 不會影響之前設為 submodule, 使用舊版 cmsimde 模組的內容管理相關運作.</p>
-<h4>利用 cmsimde 建立靜態網誌方法:</h4>
-<p>1. 在 github 建立倉儲, git clone 到近端</p>
-<p>2. 參考 <a href="https://github.com/mdecourse/newcms">https://github.com/mdecourse/newcms</a>, 加入除了 cmsimde 目錄外的所有內容</p>
-<p>以 git submodule add <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> cmsimde</p>
-<p>建立 cmsimde 目錄, 並從 github 取下子模組內容.</p>
-<p>3.在近端維護時, 更換目錄到倉儲中的 cmsimde, 以 python wsgi.py 啟動近端網際伺服器.</p>
-<p>動態內容編輯完成後, 以 generate_pages 轉為靜態內容, 以 git add commit 及 push 將內容推到遠端.</p>
-<p>4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
-<p>git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p>
-<p>wcm-2022</p>
-<br /> <a href='Tetris.html'>Next</a> >> Tetris</div>
+    <div id="tipue_search_content">W14 << <a href='W14.html'>Previous</a> <br /><h1>W17</h1>
+<p></p>
+</div>
+<div></div>
+<div></div>
+<div></div>
+<!-- graphics-column is for ggame -->
+<p><!-- #####  editor1 結束 ##### --></p>
+<p><!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd(ev):
+    # 注意這裡清除的畫布 id 為 brython_div
+    bd = doc["brython_div"]
+    bd.clear()
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw_container", storage_id="kw_py_src" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+def run():
+    # 利用 get 取下 src 變數值
+    try:
+        url = doc.query["src"]
+    except:
+        url = "https://gist.githubusercontent.com/KEHUEISIN/062fa8eafa2033c48333d08977ec3d30/raw/5153b3b8c6ad1887b8927e48506699c779a1ffa5/nnnn.py"
+    prog = open(url).read()
+    # 將程式載入編輯區
+    Ace.editor.setValue(prog)
+    Ace.editor.scrollToRow(0)
+    Ace.editor.gotoLine(0)
+    # 直接執行程式
+    Ace.run()
+
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+# 呼叫函式執行
+run()
+</script>
+</p><br />W14 << <a href='W14.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
