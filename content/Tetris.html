@@ -217,8 +217,8 @@ import beditor
 from browser import document
 url = "https://gist.githubusercontent.com/41023125/814d939de4dcc46961d52cfb48303539/raw/611b516f44d5f31ef4407e596761e7af30da753e/Tetris"
 src = open(url).read()
-tetris1 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
-document["tetris1"].bind("click", tetris1.prog)
+t1 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["t1"].bind("click", t1.prog)
 </script>
 </p>
 <p>
@@ -227,8 +227,8 @@ import beditor
 from browser import document
 url = "https://gist.githubusercontent.com/41023125/a983a728c928521597c9c4feece9e6e5/raw/b1ab00c59fe5aad2d2039df2e78237995cf39ae8/Tetris%2520-%2520score"
 src = open(url).read()
-tetris2 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
-document["tetris2"].bind("click", tetris2.prog)
+t2 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["t2"].bind("click", t2.prog)
 </script>
 </p>
 <p>
@@ -237,8 +237,8 @@ import beditor
 from browser import document
 url = "https://gist.githubusercontent.com/41023125/8d3c8b72092f53ffaf41a13f495e0eaf/raw/b23ac14ebb64826562e0d0876f6d5bdc3b6b6469/Tetris-3"
 src = open(url).read()
-tetris3= beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
-document["tetris3"].bind("click", tetris3.prog)
+t3= beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["t3"].bind("click", t3.prog)
 </script>
 </p>
 <p>
@@ -247,8 +247,8 @@ import beditor
 from browser import document
 url = "https://gist.githubusercontent.com/41023125/706176725a26a789c97ce423014f257a/raw/a40ed9f00c8a83f76ae4c4b990572d44bf715682/Tetris-4"
 src = open(url).read()
-tetris4 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
-document["tetris4"].bind("click", tetris4.prog)
+t4 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["t4"].bind("click", t4.prog)
 </script>
 </p>
 <p>
@@ -257,8 +257,8 @@ import beditor
 from browser import document
 url = "https://gist.githubusercontent.com/41023125/87dda0045d2774cf58ac915da8ad88d7/raw/12fcbdac2fd4ffa04cbce67bfee10383c1ef41e0/Tetris-5"
 src = open(url).read()
-tetris5 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
-document["tetris5"].bind("click", tetris5.prog)
+t5 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["t5"].bind("click", t5.prog)
 </script>
 </p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
@@ -268,7 +268,7 @@ document["tetris5"].bind("click", tetris5.prog)
 <p></p>
 <!-- 執行與清除按鈕開始 -->
 <p><button id="kw_run">Run</button> <button id="kw_show_console">Output</button> <button id="kw_clear_console">清除輸出區</button><button id="clear_bd">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
-<p><button id="tetris1">tetris-1</button> <button id="tetris2">tetris-2</button> <button id="tetris3">tetris-3</button> <button id="tetris4">tetris-4</button> <button id="tetris5">tetris-5</button></p>
+<p><button id="t1">t-1</button> <button id="t2">t-2</button> <button id="t3">t-3</button> <button id="t4">t-4</button> <button id="t5">t-5</button></p>
 <!-- 執行與清除按鈕結束 -->
 <p></p>
 <!-- 程式執行 ouput 區 -->
@@ -280,8 +280,7 @@ document["tetris5"].bind("click", tetris5.prog)
 <script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
-<br />About << <a href='About.html'>Previous</a> <a href='H1 midterm.html'>Next</a> >> H1 midterm</div>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script><br />About << <a href='About.html'>Previous</a> <a href='H1 midterm.html'>Next</a> >> H1 midterm</div>
         
     <!-- footer -->
       <div class="container">
