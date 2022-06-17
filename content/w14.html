@@ -140,7 +140,6 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">H1 midterm << <a href='H1 midterm.html'>Previous</a> <a href='W17.html'>Next</a> >> W17<br /><h1>W14</h1>
-<p>更改舊資料</p>
 <p>
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
@@ -212,8 +211,46 @@ function doSave(storage_id, filename){
 <p><!-- 這裡的畫布 id 為 brython_div --></p>
 <div id="brython_div"></div>
 <div></div>
-<div>
-<br />H1 midterm << <a href='H1 midterm.html'>Previous</a> <a href='W17.html'>Next</a> >> W17</div>
+<div></div>
+<div></div>
+<div></div>
+<!-- graphics-column is for ggame -->
+<p><!-- #####  editor1 結束 ##### --></p>
+<p><!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd(ev):
+    # 注意這裡清除的畫布 id 為 brython_div
+    bd = doc["brython_div"]
+    bd.clear()
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw_container", storage_id="kw_py_src" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+def run():
+    # 利用 get 取下 src 變數值
+    try:
+        url = doc.query["src"]
+    except:
+        url = "https://gist.githubusercontent.com/KEHUEISIN/062fa8eafa2033c48333d08977ec3d30/raw/5153b3b8c6ad1887b8927e48506699c779a1ffa5/nnnn.py"
+    prog = open(url).read()
+    # 將程式載入編輯區
+    Ace.editor.setValue(prog)
+    Ace.editor.scrollToRow(0)
+    Ace.editor.gotoLine(0)
+    # 直接執行程式
+    Ace.run()
+
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+# 呼叫函式執行
+run()
+</script>
+</p><br />H1 midterm << <a href='H1 midterm.html'>Previous</a> <a href='W17.html'>Next</a> >> W17</div>
         
     <!-- footer -->
       <div class="container">
