@@ -276,42 +276,199 @@ run()
 <p>H1</p>
 <p>網址:<a class="style-scope ytcp-video-info" href="https://youtu.be/HGTRZTzBbZI" target="_blank">https://youtu.be/QtdPbtvFLhY</a></p>
 <p><span style="background-color: #ffff00;"> 心得:不是很熟悉俄羅斯方塊這個遊戲，對操控不是很熟練。速度調比較慢，但還是有過6分標準。</span></p>
+<h1>期末任務1</h1>
+<p>修改 Tetris Game in Brython 網際遊戲, 讓原本由上往下落的方塊遊戲規則, 改為由下往上移動的方式進行遊戲, 保留原本的控制按鍵方式, 並加入計分系統, 程式修改編寫請利用個人 Github 帳號對應的 Gist 進行配置, 完成後, 請將程式部署在個人網頁的"期末任務1" H1 格式網頁上。</p>
 <div></div>
+<p>參考自41023146同學期末作業，新增字串"ctx.translate()"用將y方向零點設置在最下面，新增字串"ctx.scale()"將ctx用.scale把x方向縮放1倍y方向縮放-1倍。</p>
 <div></div>
-<p><span style="background-color: #ffff00;"><!-- graphics-column is for ggame --></span></p>
-<p><!-- #####  editor1 結束 ##### --></p>
-<p><!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- for ggame -->
+<p>
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/jquery-ui.1.12.1.min.js"></script>
+<script src="/static/pixi-3.0.5.min.js"></script>
+<script src="/static/buzz-1.2.1.js"></script>
+<script src="/static/bs.js"></script>
+<script src="/downloads/brython_modules.js"></script>
+</p>
+<!-- Cango 程式庫 -->
+<p>
+<script src="/static/Cango-24v03-min.js"></script>
+<script src="/static/CangoAxes-6v01-min.js"></script>
+<script src="/static/gearUtils-09.js"></script>
+<script src="/static/SVGpathUtils-6v03-min.js"></script>
+</p>
+<!-- for Konva 程式庫 -->
+<p>
+<script src="/static/konva.min.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 印出版次與關鍵字程式 --></p>
+<p>
 <script type="text/python3">
 from browser import document as doc
+from browser import html
 import ace
-
 # 清除畫布
 def clear_bd(ev):
-    # 注意這裡清除的畫布 id 為 brython_div
     bd = doc["brython_div"]
     bd.clear()
-Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw_container", storage_id="kw_py_src" )
-# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
-def run():
-    # 利用 get 取下 src 變數值
-    try:
-        url = doc.query["src"]
-    except:
-        url = "https://gist.githubusercontent.com/KEHUEISIN/062fa8eafa2033c48333d08977ec3d30/raw/5153b3b8c6ad1887b8927e48506699c779a1ffa5/nnnn.py"
-    prog = open(url).read()
-    # 將程式載入編輯區
-    Ace.editor.setValue(prog)
-    Ace.editor.scrollToRow(0)
-    Ace.editor.gotoLine(0)
-    # 直接執行程式
-    Ace.run()
-
+# Brython 3.3.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+Tetrisurl= "https://gist.githubusercontent.com/41023110/8903101ba615fc0ee99c538c5f3a26c7/raw/22d35078cb639021e1ff92728acd2d62409671b4/N1"
+Tetris = open(Tetrisurl).read()
+Ace.editor.setValue(Tetris)
+Ace.editor.scrollToRow(0)
+Ace.editor.gotoLine(0)
 # 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
 doc['kw_run'].bind('click', Ace.run)
 doc['kw_show_console'].bind('click', Ace.show_console)
 doc['kw_clear_console'].bind('click', Ace.clear_console)
 doc['clear_bd'].bind('click', clear_bd)
-# 呼叫函式執行
-run()
 </script>
 </p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">文件名：</span></span><input id="kw_filename" placeholder="輸入文件名" type="text"/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">.py</span></span></label> <span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="保存"/></span></span></form>
+<p><button id="kw_run"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">跑</span></span></button> <button id="kw_show_console"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">輸出</span></span></button> <button id="kw_clear_console"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">清除輸出區</span></span></button><button id="clear_bd"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">清畫區</span></span></button><button onclick="window.location.reload()"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">重新加載</span></span></button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
+<div style="width: 100%; height: 100%;"></div>
+<div style="width: 100%; height: 100%;"></div>
+<div id="brython_div"></div>
+<script>
+var winkVideoData3 = {
+  dataVersion: 1,
+  frameRate: 10,
+  buttonFrameLength: 5,
+  buttonFrameOffset: 2,
+  frameStops: {
+  },
+};
+</script><h1>期末任務2</h1>
+<p>修改 Auto Tetris Game in Brython 網際遊戲, 讓原本由上往下落的方塊遊戲規則, 改為由下往上移動的方式進行遊戲, 保留原本的控制按鍵方式, 並加入計分系統, 程式修改編寫請利用個人 Github 帳號對應的 Gist 進行配置, 完成後, 請將程式部署在個人網頁的"期末任務2" H1 格式網頁上。</p>
+<div></div>
+<p>參考41023146同學期末作業，新增"ctx.translate()"用將零點設置在最下面，新增"ctx.scale()"將ctx用.scale把x方向縮放1倍y方向縮放-1倍。原先分數顯示於畫布上，所以分數倒了過來，將原先分數系統串字刪除，用html建立DIV標註物件後將變數顯示的值設為"Score:"；然後將score_doc的id設為"Score:"最後用brython_div &lt;=score_doc把score_doc插入頁面裡。將得到分數score這個變數代入到155與156列函式，函式返回score_doc.innerHTML的值就是Score:score的形式.innerHTML這個方式是將變數的內容顯示於頁面上。從self.score得到分數，輸入到updata_score()這個函式。</p>
+<div></div>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- for ggame -->
+<p>
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/jquery-ui.1.12.1.min.js"></script>
+<script src="/static/pixi-3.0.5.min.js"></script>
+<script src="/static/buzz-1.2.1.js"></script>
+<script src="/static/bs.js"></script>
+<script src="/downloads/brython_modules.js"></script>
+</p>
+<!-- Cango 程式庫 -->
+<p>
+<script src="/static/Cango-24v03-min.js"></script>
+<script src="/static/CangoAxes-6v01-min.js"></script>
+<script src="/static/gearUtils-09.js"></script>
+<script src="/static/SVGpathUtils-6v03-min.js"></script>
+</p>
+<!-- for Konva 程式庫 -->
+<p>
+<script src="/static/konva.min.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 印出版次與關鍵字程式 --></p>
+<p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+# 清除畫布
+def clear_bd(ev):
+    bd = doc["brython_div"]
+    bd.clear()
+# Brython 3.3.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+Tetrisurl= "https://gist.githubusercontent.com/41023110/bc996c7301f10a65af1b912c5d08827f/raw/975f5789110d4eb9778be69bf10886f51d5b2741/N2"
+Tetris = open(Tetrisurl).read()
+Ace.editor.setValue(Tetris)
+Ace.editor.scrollToRow(0)
+Ace.editor.gotoLine(0)
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+</script>
+</p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">文件名：</span></span><input id="kw_filename" placeholder="輸入文件名" type="text"/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">.py</span></span></label> <span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="保存"/></span></span></form>
+<p><button id="kw_run"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">跑</span></span></button> <button id="kw_show_console"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">輸出</span></span></button> <button id="kw_clear_console"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">清除輸出區</span></span></button><button id="clear_bd"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">清畫區</span></span></button><button onclick="window.location.reload()"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">重新加載</span></span></button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
+<div style="width: 100%; height: 100%;"></div>
+<div style="width: 100%; height: 100%;"></div>
+<div id="brython_div"></div>
+<script>
+var winkVideoData3 = {
+  dataVersion: 1,
+  frameRate: 10,
+  buttonFrameLength: 5,
+  buttonFrameOffset: 2,
+  frameStops: {
+  },
+};
+
+</p>
+</div>
+</script>

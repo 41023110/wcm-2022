@@ -128,7 +128,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Tetris.html'>Tetris</a><li><a href='H1 midterm.html'>H1 midterm</a><li><a href='W14.html'>W14</a><li><a href='W17.html'>W17</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Tetris.html'>Tetris</a><li><a href='H1 midterm.html'>H1 midterm</a><li><a href='W14.html'>W14</a><li><a href='W17.html'>W17</a><li><a href='期末任務1.html'>期末任務1</a><li><a href='期末任務2.html'>期末任務2</a></li>
                       </ul>
                 </nav>
               </div>
@@ -139,50 +139,12 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">W14 << <a href='W14.html'>Previous</a> <br /><h1>W17</h1>
+    <div id="tipue_search_content">W14 << <a href='W14.html'>Previous</a> <a href='期末任務1.html'>Next</a> >> 期末任務1<br /><h1>W17</h1>
 <div></div>
 <p>H1</p>
 <p>網址:<a class="style-scope ytcp-video-info" href="https://youtu.be/HGTRZTzBbZI" target="_blank">https://youtu.be/QtdPbtvFLhY</a></p>
 <p><span style="background-color: #ffff00;"> 心得:不是很熟悉俄羅斯方塊這個遊戲，對操控不是很熟練。速度調比較慢，但還是有過6分標準。</span></p>
-<div></div>
-<div></div>
-<p><span style="background-color: #ffff00;"><!-- graphics-column is for ggame --></span></p>
-<p><!-- #####  editor1 結束 ##### --></p>
-<p><!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
-<script type="text/python3">
-from browser import document as doc
-import ace
-
-# 清除畫布
-def clear_bd(ev):
-    # 注意這裡清除的畫布 id 為 brython_div
-    bd = doc["brython_div"]
-    bd.clear()
-Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw_container", storage_id="kw_py_src" )
-# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
-def run():
-    # 利用 get 取下 src 變數值
-    try:
-        url = doc.query["src"]
-    except:
-        url = "https://gist.githubusercontent.com/KEHUEISIN/062fa8eafa2033c48333d08977ec3d30/raw/5153b3b8c6ad1887b8927e48506699c779a1ffa5/nnnn.py"
-    prog = open(url).read()
-    # 將程式載入編輯區
-    Ace.editor.setValue(prog)
-    Ace.editor.scrollToRow(0)
-    Ace.editor.gotoLine(0)
-    # 直接執行程式
-    Ace.run()
-
-# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
-doc['kw_run'].bind('click', Ace.run)
-doc['kw_show_console'].bind('click', Ace.show_console)
-doc['kw_clear_console'].bind('click', Ace.clear_console)
-doc['clear_bd'].bind('click', clear_bd)
-# 呼叫函式執行
-run()
-</script>
-</p><br />W14 << <a href='W14.html'>Previous</a> </div>
+<br />W14 << <a href='W14.html'>Previous</a> <a href='期末任務1.html'>Next</a> >> 期末任務1</div>
         
     <!-- footer -->
       <div class="container">
